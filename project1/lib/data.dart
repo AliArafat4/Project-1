@@ -1,0 +1,42 @@
+List<Map<String, dynamic>> booksList = [
+  {
+    "id": "1",
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "category": "Tech",
+    "price": 10,
+    "copies": 100,
+  },
+  {
+    "id": "2",
+    "title": "Code Complete: A Practical Handbook of Software Construction",
+    "author": "Steve McConnell",
+    "category": "Tech",
+    "price": 15,
+    "copies": 150,
+  },
+  {
+    "id": "3",
+    "title": "The Joy of Cooking",
+    "author": "Irma S. Rombauer",
+    "category": "Cooking",
+    "price": 5,
+    "copies": 50,
+  },
+  {
+    "id": "4",
+    "title": "The Fannie Farmer Cookbook",
+    "author": "Marion Cunningham",
+    "category": "Cooking",
+    "price": 2.5,
+    "copies": 45,
+  },
+  {
+    "id": "5",
+    "title": "Program",
+    "author": "Ali",
+    "category": "Tech",
+    "price": 50,
+    "copies": 5000,
+  },
+];
