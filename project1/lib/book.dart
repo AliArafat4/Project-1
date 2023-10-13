@@ -1,3 +1,4 @@
+//This class is used to instantiates a book object with all of its properties
 class Book {
   String? id, title, author, category;
   num? price;
