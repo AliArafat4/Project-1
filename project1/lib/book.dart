@@ -7,6 +7,6 @@ class Book {
 
   listAllBooks() {
     print(
-        "ID: $id, Title: $title, Category: $category, Author: $author, Copies: $copies, Price: $price");
+        "ID: $id, Title: $title, Category: $category, Author: $author, Copies: $copies, Price: $price\$");
   }
 }

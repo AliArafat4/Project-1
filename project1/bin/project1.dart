@@ -17,6 +17,7 @@ void main(List<String> arguments) {
     print("Press 5 to delete a book");
     print("Press 6 to display invoice");
     print("Press 7 to display all categories");
+    print("Press 8 to display report");
     print("--Press any other key to exit--");
     String? userInput = stdin.readLineSync();
 
@@ -28,7 +29,29 @@ void main(List<String> arguments) {
         searchMethodSelection(allBooks: allBooks);
         break;
       case "3": //purchase books
-        purchasedBooks = purchaseBooks(allBooks: allBooks);
+        Book b = Book();
+        List<Book> tmp = [];
+        purchaseBooks(allBooks: allBooks).map((e) => b = e).toList();
+        if (purchasedBooks.isEmpty) {
+          purchasedBooks.add(b);
+        } else {
+          for (var element in purchasedBooks) {
+            if (element.title == b.title!) {
+              element.copies = element.copies! + b.copies!;
+              print("here");
+            }
+            //TODO: FIX
+            // else {
+            //   tmp.add(b);
+            //   print("object");
+            // }
+          }
+        }
+        // for (var item in tmp) {
+        //   purchasedBooks.add(item);
+        //   print("item");
+        // }
+        // tmp.clear();
         break;
       case "4": //add books
         addNewBooks(allBooks: allBooks);
@@ -37,15 +60,13 @@ void main(List<String> arguments) {
         deleteBook(allBooks: allBooks);
         break;
       case "6": //display invoice
-        //  displayInvoice(purchasedBooks: purchasedBooks);
+        displayInvoice(purchasedBooks: purchasedBooks);
         break;
       case "7": //display categories
-        print("Enter the category");
-        userInput = stdin.readLineSync();
-        searchForBook(
-            allBooks: allBooks,
-            query: userInput![0].toUpperCase() + userInput.substring(1).toLowerCase(),
-            type: "category");
+        listAllCategoriesForSearch(allBooks: allBooks);
+        break;
+      case "8": //reporting
+        reporting(purchasedBooks: purchasedBooks);
         break;
       default:
         print("--Program Ended--");
