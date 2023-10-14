@@ -18,6 +18,7 @@ Some preview images for main functions from the program:
 ![Purchase](https://github.com/AliArafat4/Project-1/assets/84300173/bd482f0f-577b-4553-9575-4d0415daa527)
 
 * You can either add a new book, or incease an existance book copies by pressing 4 and entering a new books name or an existant book name:
+
   
 ![Add_existant_book](https://github.com/AliArafat4/Project-1/assets/84300173/04512323-2f62-470b-8449-10f50cb86cfc)
 
@@ -26,6 +27,7 @@ Some preview images for main functions from the program:
 ![Delete_book](https://github.com/AliArafat4/Project-1/assets/84300173/7f6cc5be-113f-448c-a4c8-8e2acd396d2a)
 
 * To display your invoice press 6:
+
   
 ![Display_invoice](https://github.com/AliArafat4/Project-1/assets/84300173/38abee1a-308a-43b0-8ef2-f89ac2fd06f1)
 
