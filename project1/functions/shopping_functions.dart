@@ -14,6 +14,7 @@ List<Book> purchaseBooks({required List<Book> allBooks}) {
   while (inSelection) {
     print("A: You can purchase a book by entering its ID");
     print("B: You can purchase a book by entering its title");
+    print("--Press Q to go back--");
     userInput = stdin.readLineSync();
     switch (userInput!.toUpperCase()) {
       case "A":
@@ -35,7 +36,8 @@ List<Book> purchaseBooks({required List<Book> allBooks}) {
               numberOfPurchasedCopies = int.parse(stdin.readLineSync()!);
 
               if (numberOfPurchasedCopies > e.copies!) {
-                print("Sorry we don't have that amount of copies at the moment");
+                print(
+                    "Sorry we don't have that amount of copies at the moment");
                 enoughCopies = false;
                 inSelection = true;
                 return toPurchase;
@@ -86,7 +88,8 @@ List<Book> purchaseBooks({required List<Book> allBooks}) {
               numberOfPurchasedCopies = int.parse(stdin.readLineSync()!);
 
               if (numberOfPurchasedCopies > e.copies!) {
-                print("Sorry we don't have that amount of copies at the moment");
+                print(
+                    "Sorry we don't have that amount of copies at the moment");
                 enoughCopies = false;
                 inSelection = true;
                 return toPurchase;
@@ -118,6 +121,8 @@ List<Book> purchaseBooks({required List<Book> allBooks}) {
           }
         }).toList();
         break;
+      case "Q":
+        inSelection = false;
     }
   }
 
@@ -126,7 +131,8 @@ List<Book> purchaseBooks({required List<Book> allBooks}) {
     return toPurchase;
   } else if (availableCopies == 0) {
     inSelection = true;
-    print("Sorry but the book with the ID or name ($userInput) is not available at the moment");
+    print(
+        "Sorry but the book with the ID or name ($userInput) is not available at the moment");
   } else if (toPurchase.isEmpty && enoughCopies) {
     inSelection = true;
     print("Book with the ID or name ($userInput) does not exist");
@@ -139,9 +145,11 @@ void displayInvoice({required List<Book> purchasedBooks}) {
 
   purchasedBooks.map((e) {
     try {
-      print(
-          "You have purchased (${e.title}) books\nNumber of copies: ${e.copies}\nPrice: ${e.price! * e.copies!}\$");
-      totalPrice += e.price! * e.copies!;
+      if (e.price != null) {
+        print(
+            "You have purchased (${e.title}) books\nNumber of copies: ${e.copies}\nPrice: ${e.price! * e.copies!}\$");
+        totalPrice += e.price! * e.copies!;
+      }
     } on Exception catch (e) {
       print(e);
     }

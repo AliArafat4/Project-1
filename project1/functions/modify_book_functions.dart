@@ -148,6 +148,7 @@ void editBookInformation({required List<Book> allBooks}) {
       print("A: Modify the title of the book");
       print("B: Modify the author of the book");
       print("C: Modify the price of the book");
+      print("--Press Q to go back--");
       userInput = stdin.readLineSync();
       correctID = false;
 
@@ -187,16 +188,23 @@ void editBookInformation({required List<Book> allBooks}) {
               userInput = stdin.readLineSync();
               var oldPrice = e.price;
               try {
-                e.price = int.parse(userInput!);
-                print(
-                    "You have successfully change the price of the book from ($oldPrice\$) to (${e.price}\$)");
-                inSelection = false;
+                int newPrice = int.parse(userInput!);
+                if (newPrice > 0) {
+                  e.price = newPrice;
+                  print(
+                      "You have successfully change the price of the book from ($oldPrice\$) to (${e.price}\$)");
+                  inSelection = false;
+                } else {
+                  print("Please enter a value greater than 0");
+                }
               } on Exception catch (e) {
                 print("The value you have entered is not a number");
               }
             }
           }).toList();
           break;
+        case "Q":
+          inSelection = false;
       }
     } else {
       print("The ID you have entered does not belong to any book");
