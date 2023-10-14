@@ -1,4 +1,3 @@
-![Edit_book](https://github.com/AliArafat4/Project-1/assets/84300173/007fe93b-8167-4c5a-b6b4-48da5ee80643)# Ali's Library 
 This project is used to manage and purchase books from our library.
 
 ## Description
