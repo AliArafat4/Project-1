@@ -1,83 +1,61 @@
-# Project 1 - Library Project using Dart
+This project is used to manage and purchase books from our library.
 
-Congratulations on reaching the project phase! This project will assess your ability to develop a "Library Project using Dart" with a Command Line Interface (CLI) to manage a library's book inventory and user interactions. Below are the key requirements and evaluation criteria:
+## Description
 
+In this program you can add, edit, delete and other functions in a list of library's books in an easy and quick fasion.
+Some preview images for main functions from the program:
 
-## Description:
+* To list all books, just Enter 1:
+  
+![list_all_books](https://github.com/AliArafat4/Project-1/assets/84300173/cf988680-f779-431c-aea1-2e8e19d3408a)
 
-The "Library Project using Dart" is an exciting software application designed to efficiently manage a library's book inventory and streamline user interactions through a Command Line Interface (CLI). This capstone project provides you, as a student, with an excellent opportunity to apply your knowledge and skills in Flutter Development, showcasing your proficiency in Dart programming.
+* To saerch for a book by different ways just press 2 and then choose the method of searcc:
+  
+![Search](https://github.com/AliArafat4/Project-1/assets/84300173/b0f52748-84b6-414d-af1a-c4108739bc2f)
 
-The primary goal of the project is to develop a user-friendly and efficient CLI that caters to both library staff and patrons. With this CLI, users can effortlessly query books, view the number of available copies, add new books to the library, delete books from the inventory, make book purchases, and receive detailed invoices after each purchase. Additionally, the project demands an essential feature - updating the number of book copies after a purchase is made to maintain accurate inventory records.
+* To purchase books, press 3 and then enter the ID of the book and how many copies you want to buy:
+  
+![Purchase](https://github.com/AliArafat4/Project-1/assets/84300173/bd482f0f-577b-4553-9575-4d0415daa527)
 
-To begin, you will create a new Dart project, ensuring that the project structure is appropriately organized for a clean and manageable codebase. As you progress, it is crucial to write code that is clear, well-organized, and scalable, adhering to standard coding conventions to enhance code readability. Demonstrating your comprehensive understanding of programming concepts and techniques is essential for a successful outcome.
+* You can either add a new book, or incease an existance book copies by pressing 4 and entering a new books name or an existant book name:
 
-Your CLI should allow users to search for books by title, author, or category, providing a straightforward and accessible way to retrieve information about the library's collection. Implementing a method to add new books to the library with the appropriate updates to the book count will further enhance the system's usability.
+  
+![Add_existant_book](https://github.com/AliArafat4/Project-1/assets/84300173/04512323-2f62-470b-8449-10f50cb86cfc)
 
-Managing the library's inventory also involves implementing a method to delete books, ensuring smooth handling of cases where a book to be deleted does not exist. Facilitating book purchases through the CLI is another critical aspect, requiring you to decrease the number of book copies according to the books purchased and generate an informative invoice for the user.
+* To delete a book press 5, then the ID or the title of the book:
+  
+![Delete_book](https://github.com/AliArafat4/Project-1/assets/84300173/7f6cc5be-113f-448c-a4c8-8e2acd396d2a)
 
-As an extra credit opportunity, you can implement features such as displaying all book categories in the library, returning a list of books belonging to a selected category. Additionally, providing a method to count the number of purchased books will further showcase your skills.
+* To display your invoice press 6:
 
-The project must be written entirely in the Dart language and fully submitted through GitHub using version control (Git). Remember to create descriptive commits to showcase your progress and follow the provided guidelines for academic integrity.
+  
+![Display_invoice](https://github.com/AliArafat4/Project-1/assets/84300173/38abee1a-308a-43b0-8ef2-f89ac2fd06f1)
 
+* To edit a book, press 9, then choose the property you want to change:
+  
+![Edit_book](https://github.com/AliArafat4/Project-1/assets/84300173/aa5680f1-0663-49cb-8101-511b01acdbca)
 
+* You can explore the rest of the program by yourself :b
 
-## Minimum Requirements:
+## Getting Started
 
-1. **Project Structure**: Create a new Dart project and organize its structure appropriately. Set up the necessary folders, files, and ensure a clean and organized project layout.
+### Dependencies
 
-2. **Clean Code**: Write clear, well-organized, and scalable code. Use meaningful variable and function names, following standard coding conventions to improve code readability. Well-structured and easily maintainable code is essential.
-
-3. **Applying Concepts**: Demonstrate a comprehensive understanding of programming concepts and techniques. Implement the CLI features with efficiency and correctness.
-
-4. **Query Books**: Develop a simple CLI user interface that allows users to query books and view the number of available copies. Users should be able to search for books by title, author, or category.
-
-5. **Add New Book**: Provide a method to add a new book to the library and update the number of book copies accordingly. Ensure proper error handling for invalid inputs.
-
-6. **Delete Book**: Implement a method to delete a book from the library and update the book count. Handle cases where the book to be deleted does not exist.
-
-7. **Purchase**: Implement the purchase process, allowing users to buy books from the library. Ensure that the number of book copies is decreased according to the books purchased.
-
-8. **Invoice**: Display a detailed invoice after the purchase, showing the books purchased, their prices, and the total cost.
-
-9. **Editing Capability**: Add the ability to modify book data, such as title, author, and price. Users should be able to update book information easily.
-
-## Ideas for Extra Credit:
-
-- **Display all Book Categories**: Provide a method to display a list of all book categories in the library. When a category is selected, return a list of all books belonging to that category.
-- **Reporting:** Provide a method to present a report that contains the number of all purchased books from the library, and calculate their amount.
+* Anyone can use this program.
   
 
-## Delivery Requirements:
+### Installing
 
-- **Language**: The project should be written in Dart language.
+* Download the file, then run it in and IDE or CMD
 
-- **GitHub Submission**:
-   - Create a Fork from the exam’s GitHub repository.
-   - Create a new branch with your name.
-   - Commit frequently with descriptive messages to show your progress.
-   - Finally, create a Pull Request to the exam’s original repository containing your solution.
+### Executing program
 
-- **README.md File**: Include a README.md file with instructions on how to run and test the project. This file should provide a clear guide for users to understand how to interact with the CLI.
+* use Dart run in CMD or just use an IDE
 
-- **Screenshots**: Include relevant screenshots of the app to showcase its appearance and functionalities. Visuals can help users understand the app's design and layout.
 
-## Schedule & Deadlines:
+## Notes
+just have fun :D
 
-- Exam Start Date: 12/10/2023 - 3:00 PM
-- Exam Submission Deadline: 15/10/2023 – 9:59 AM
+## Authors
 
-## Evaluation Criteria:
-
-The project will be evaluated based on the following criteria:
-
-- **Completion**: The extent to which the project meets all the minimum requirements, including the extra credit ideas if implemented.
-
-- **Quality**: The overall quality of the project, including the coding style, organization, and ease of maintenance. Well-structured and readable code will be favorably evaluated.
-
-- **Use of Programming Concepts**: How well you utilize programming concepts such as classes, abstracts, functions, and other relevant techniques.
-
-## Resources
-
-- [Dart Tutorials](https://dart.dev/tutorials)
-
-Good luck with the project, and feel free to ask any additional questions if needed!
+Me: Ali Arafat
