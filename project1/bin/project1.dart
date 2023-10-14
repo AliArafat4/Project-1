@@ -27,52 +27,54 @@ void main(List<String> arguments) {
       case "1": //list all books
         listAllBooks(allBooks: allBooks);
         break;
+
       case "2": //search for books
         searchMethodSelection(allBooks: allBooks);
         break;
+
       case "3": //purchase books
-        Book b = Book();
-        List<Book> tmp = [];
-        purchaseBooks(allBooks: allBooks).map((e) => b = e).toList();
-        if (purchasedBooks.isEmpty) {
-          purchasedBooks.add(b);
-        } else {
-          for (var element in purchasedBooks) {
-            if (element.title == b.title!) {
-              element.copies = element.copies! + b.copies!;
-              print("here");
-            }
-            //TODO: FIX
-            // else {
-            //   tmp.add(b);
-            //   print("object");
-            // }
+        Book book = Book();
+        bool found = false;
+        purchaseBooks(allBooks: allBooks).map((e) => book = e).toList();
+        // check if book in the purchase list to add copies or add new item
+        //TODO: FIX IF LESS THAN 0 ENTERED
+        purchasedBooks.where((element) {
+          if (element.id == book.id) {
+            element.copies = element.copies! + book.copies!;
+            found = true;
+            return true;
           }
+          return true;
+        }).toList();
+        if (!found) {
+          purchasedBooks.add(book);
         }
-        // for (var item in tmp) {
-        //   purchasedBooks.add(item);
-        //   print("item");
-        // }
-        // tmp.clear();
+
         break;
       case "4": //add books
         addNewBooks(allBooks: allBooks);
         break;
+
       case "5": //delete book
         deleteBook(allBooks: allBooks);
         break;
+
       case "6": //display invoice
         displayInvoice(purchasedBooks: purchasedBooks);
         break;
+
       case "7": //display categories
         listAllCategoriesForSearch(allBooks: allBooks);
         break;
+
       case "8": //reporting
         reporting(purchasedBooks: purchasedBooks);
         break;
+
       case "9": //edit book information
         editBookInformation(allBooks: allBooks);
         break;
+
       default:
         print("--Program Ended--");
         exit(0);

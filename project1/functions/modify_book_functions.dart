@@ -4,6 +4,7 @@ import '../classes/book.dart';
 
 void addNewBooks({required List<Book> allBooks}) {
   bool isExist = false;
+  bool isNewBook = false;
   String? userInput;
   String? title;
   while (!isExist) {
@@ -17,46 +18,72 @@ void addNewBooks({required List<Book> allBooks}) {
     }).toString();
     if (isExist) {
       print("($userInput) already exists in our library");
-      isExist = false;
+      print("How many copies do u want to add");
+      try {
+        int added = int.parse(stdin.readLineSync()!);
+        if (added <= 0) {
+          print("Please enter a valid number greater than 0");
+          isExist = false;
+        } else {
+          allBooks.where((element) {
+            if (element.title == userInput) {
+              element.copies = element.copies! + added;
+              print("You have added ($added) copies to (${element.title})");
+              isExist = true;
+              isNewBook = false;
+              return true;
+            }
+            return false;
+          }).toList();
+        }
+      } on Exception catch (e) {
+        print("Please enter a valid number");
+        isExist = false;
+      }
     } else {
       isExist = true;
+      isNewBook = true;
     }
   }
+  if (isNewBook) {
+    bool active = true;
+    while (active) {
+      try {
+        final int id = int.parse(allBooks.last.id!) + 1;
 
-  final int id = int.parse(allBooks.last.id!) + 1;
+        print("Enter the category for the book");
+        userInput = stdin.readLineSync();
+        final category = userInput;
 
-  print("Enter the category for the book");
-  userInput = stdin.readLineSync();
-  final category = userInput;
+        print("Enter the name of the author for the book");
+        userInput = stdin.readLineSync();
+        final authorName = userInput;
 
-  print("Enter the name of the author for the book");
-  userInput = stdin.readLineSync();
-  final authorName = userInput;
+        print("Enter the price for the book");
+        userInput = stdin.readLineSync();
+        final int price = int.parse(userInput!);
 
-  bool active = true;
-  while (active) {
-    try {
-      print("Enter the price for the book");
-      userInput = stdin.readLineSync();
-      final int price = int.parse(userInput!);
-
-      print("Enter the number of copies for the book");
-      userInput = stdin.readLineSync();
-      final int numberOfCopies = int.parse(userInput!);
-
-      Book addedBook = Book(
-        id: "$id",
-        title: title,
-        author: authorName,
-        category: category![0].toUpperCase() + category.substring(1),
-        price: price,
-        copies: numberOfCopies,
-      );
-      allBooks.add(addedBook);
-      print("Your have successfully added (${addedBook.title}) book");
-      active = false;
-    } on Exception catch (e) {
-      print("Please enter a valid number for the price and/or copies");
+        print("Enter the number of copies for the book");
+        userInput = stdin.readLineSync();
+        final int numberOfCopies = int.parse(userInput!);
+        if (numberOfCopies <= 0 && price <= 0) {
+          print("Please enter a valid number greater than 0");
+        } else {
+          Book addedBook = Book(
+            id: "$id",
+            title: title,
+            author: authorName,
+            category: category![0].toUpperCase() + category.substring(1),
+            price: price,
+            copies: numberOfCopies,
+          );
+          allBooks.add(addedBook);
+          print("Your have successfully added (${addedBook.title}) book");
+          active = false;
+        }
+      } on Exception catch (e) {
+        print("Please enter a valid number for the price and/or copies");
+      }
     }
   }
 }

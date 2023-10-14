@@ -1,6 +1,7 @@
 import '../constants/data.dart';
 import '../classes/book.dart';
 
+//load all books from [books] list
 List<Book> loadBooks() {
   List<Book> allBooks = [];
   for (var books in booksList) {

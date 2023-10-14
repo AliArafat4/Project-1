@@ -21,36 +21,49 @@ List<Book> purchaseBooks({required List<Book> allBooks}) {
         print("Enter book's ID");
         String? userInput = stdin.readLineSync();
         allBooks.map((e) {
-          if (e.id == userInput) {
-            availableCopies = e.copies!;
-            if (availableCopies == 0) {
-              return toPurchase;
-            }
+          try {
+            if (e.id == userInput) {
+              availableCopies = e.copies!;
 
-            print("How many copies are you purchasing ?");
-            numberOfPurchasedCopies = int.parse(stdin.readLineSync()!);
+              if (availableCopies == 0) {
+                inSelection = true;
+                return toPurchase;
+              }
 
-            if (numberOfPurchasedCopies > e.copies!) {
-              print("Sorry we don't have that amount of copies at the moment");
-              enoughCopies = false;
-              return toPurchase;
-            } else if (numberOfPurchasedCopies <= 0) {
-              print("Please enter a valid number greater than 0");
+              print("How many copies are you purchasing ?");
+
+              numberOfPurchasedCopies = int.parse(stdin.readLineSync()!);
+
+              if (numberOfPurchasedCopies > e.copies!) {
+                print("Sorry we don't have that amount of copies at the moment");
+                enoughCopies = false;
+                inSelection = true;
+                return toPurchase;
+              } else if (numberOfPurchasedCopies <= 0) {
+                print("Please enter a valid number greater than 0");
+                inSelection = true;
+              } else {
+                bookInfo
+                  ..copies = e.copies
+                  ..category = e.category
+                  ..price = e.price
+                  ..title = e.title
+                  ..id = e.id
+                  ..author = e.author;
+                final int remainingCopies = e.copies! - numberOfPurchasedCopies;
+                bookInfo.copies = numberOfPurchasedCopies;
+                print(
+                    "You purchased ($numberOfPurchasedCopies) copies of (${e.title}) successfully");
+                toPurchase.add(bookInfo);
+                e.copies = remainingCopies;
+                return toPurchase;
+              }
             } else {
-              bookInfo
-                ..copies = e.copies
-                ..category = e.category
-                ..price = e.price
-                ..title = e.title
-                ..id = e.id
-                ..author = e.author;
-              final int remainingCopies = e.copies! - numberOfPurchasedCopies;
-              bookInfo.copies = numberOfPurchasedCopies;
-              print("You purchased ($numberOfPurchasedCopies) copies of (${e.title}) successfully");
-              toPurchase.add(bookInfo);
-              e.copies = remainingCopies;
-              return toPurchase;
+              inSelection = true;
             }
+          } on Exception catch (e) {
+            print("Please enter a valid number");
+            inSelection = true;
           }
         }).toList();
         break;
@@ -60,36 +73,48 @@ List<Book> purchaseBooks({required List<Book> allBooks}) {
         print("Enter book's title");
         String? userInput = stdin.readLineSync();
         allBooks.map((e) {
-          if (e.title == userInput) {
-            availableCopies = e.copies!;
-            if (availableCopies == 0) {
-              return toPurchase;
-            }
+          try {
+            if (e.title == userInput) {
+              availableCopies = e.copies!;
+              if (availableCopies == 0) {
+                inSelection = true;
+                return toPurchase;
+              }
 
-            print("How many copies are you purchasing ?");
-            int numberOfPurchasedCopies = int.parse(stdin.readLineSync()!);
+              print("How many copies are you purchasing ?");
 
-            if (numberOfPurchasedCopies > e.copies!) {
-              print("Sorry we don't have that amount of copies at the moment");
-              enoughCopies = false;
-              return toPurchase;
-            } else if (numberOfPurchasedCopies <= 0) {
-              print("Please enter a valid number greater than 0");
+              numberOfPurchasedCopies = int.parse(stdin.readLineSync()!);
+
+              if (numberOfPurchasedCopies > e.copies!) {
+                print("Sorry we don't have that amount of copies at the moment");
+                enoughCopies = false;
+                inSelection = true;
+                return toPurchase;
+              } else if (numberOfPurchasedCopies <= 0) {
+                print("Please enter a valid number greater than 0");
+                inSelection = true;
+              } else {
+                bookInfo
+                  ..copies = e.copies
+                  ..category = e.category
+                  ..price = e.price
+                  ..title = e.title
+                  ..id = e.id
+                  ..author = e.author;
+                final int remainingCopies = e.copies! - numberOfPurchasedCopies;
+                bookInfo.copies = numberOfPurchasedCopies;
+                print(
+                    "You purchased ($numberOfPurchasedCopies) copies of (${e.title}) successfully");
+                toPurchase.add(bookInfo);
+                e.copies = remainingCopies;
+                return toPurchase;
+              }
             } else {
-              bookInfo
-                ..copies = e.copies
-                ..category = e.category
-                ..price = e.price
-                ..title = e.title
-                ..id = e.id
-                ..author = e.author;
-              final int remainingCopies = e.copies! - numberOfPurchasedCopies;
-              bookInfo.copies = numberOfPurchasedCopies;
-              print("You purchased ($numberOfPurchasedCopies) copies of (${e.title}) successfully");
-              toPurchase.add(bookInfo);
-              e.copies = remainingCopies;
-              return toPurchase;
+              inSelection = true;
             }
+          } on Exception catch (e) {
+            print("Please enter a valid number");
+            inSelection = true;
           }
         }).toList();
         break;
@@ -97,10 +122,13 @@ List<Book> purchaseBooks({required List<Book> allBooks}) {
   }
 
   if (numberOfPurchasedCopies <= 0) {
+    inSelection = true;
     return toPurchase;
   } else if (availableCopies == 0) {
+    inSelection = true;
     print("Sorry but the book with the ID or name ($userInput) is not available at the moment");
   } else if (toPurchase.isEmpty && enoughCopies) {
+    inSelection = true;
     print("Book with the ID or name ($userInput) does not exist");
   }
   return toPurchase;
@@ -108,6 +136,7 @@ List<Book> purchaseBooks({required List<Book> allBooks}) {
 
 void displayInvoice({required List<Book> purchasedBooks}) {
   num totalPrice = 0;
+
   purchasedBooks.map((e) {
     try {
       print(
