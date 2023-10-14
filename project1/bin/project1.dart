@@ -1,6 +1,7 @@
-import 'package:project1/book.dart';
-import 'package:project1/book_operation.dart';
+import '../classes/book.dart';
 import 'dart:io';
+
+import '../functions/book_operation_exports.dart';
 
 void main(List<String> arguments) {
   List<Book> allBooks = [];
@@ -18,6 +19,7 @@ void main(List<String> arguments) {
     print("Press 6 to display invoice");
     print("Press 7 to display all categories");
     print("Press 8 to display report");
+    print("Press 9 to edit books");
     print("--Press any other key to exit--");
     String? userInput = stdin.readLineSync();
 
@@ -67,6 +69,9 @@ void main(List<String> arguments) {
         break;
       case "8": //reporting
         reporting(purchasedBooks: purchasedBooks);
+        break;
+      case "9": //edit book information
+        editBookInformation(allBooks: allBooks);
         break;
       default:
         print("--Program Ended--");
