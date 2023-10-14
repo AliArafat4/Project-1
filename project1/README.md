@@ -46,7 +46,7 @@ Some preview images for main functions from the program:
 
 ### Installing
 
-* Download the file, the run it in IDE or CMD
+* Download the file, then run it in and IDE or CMD
 
 ### Executing program
 
